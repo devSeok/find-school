@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/school?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show-sel: true
+        format-sql: true
+    open-in-view: false
+  logging:
+    level:
+      org.hibernate.SQL: debug
+      org.hibernate.type: trace
