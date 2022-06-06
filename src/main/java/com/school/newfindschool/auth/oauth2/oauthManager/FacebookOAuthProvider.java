@@ -1,9 +1,10 @@
 package com.school.newfindschool.auth.oauth2.oauthManager;
 
-import com.oracle.javafx.jmx.json.JSONException;
+
 import com.school.newfindschool.auth.oauth2.Social;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

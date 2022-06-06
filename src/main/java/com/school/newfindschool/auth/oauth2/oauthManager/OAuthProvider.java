@@ -1,9 +1,9 @@
 package com.school.newfindschool.auth.oauth2.oauthManager;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.oracle.javafx.jmx.json.JSONException;
 import com.school.newfindschool.auth.oauth2.Social;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.http.*;
