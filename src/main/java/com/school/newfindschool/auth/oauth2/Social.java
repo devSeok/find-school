@@ -3,9 +3,11 @@ package com.school.newfindschool.auth.oauth2;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @NoArgsConstructor
+@ToString
 public class Social {
 
     private String providerId;
