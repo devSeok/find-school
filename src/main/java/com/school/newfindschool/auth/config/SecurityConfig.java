@@ -1,6 +1,9 @@
 package com.school.newfindschool.auth.config;
 
 
+import com.school.newfindschool.config.jwt.JwtAuthenticationFilter;
+import com.school.newfindschool.config.jwt.JwtTokenProvider;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -21,9 +24,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @EnableWebSecurity
+@RequiredArgsConstructor
 @Configuration
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -58,10 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                        CommonUtil.response(response, "토큰이 유효하지 않습니다.", HttpStatus.UNAUTHORIZED);
                         return;
                     }
-                });
-//                .and()
-//                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider)
-//                        , UsernamePasswordAuthenticationFilter.class);
+                })
+                .and()
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider)
+                        , UsernamePasswordAuthenticationFilter.class);
     }
 
 
