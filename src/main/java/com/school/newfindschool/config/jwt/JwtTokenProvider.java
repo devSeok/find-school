@@ -41,24 +41,24 @@ public class JwtTokenProvider {
     }
 
     // Access Token 생성.
-    public String createAccessToken(String email, String roles){
-        return this.createToken(email, roles, accessTokenValidTime);
+    public String createAccessToken(String email){
+        return this.createToken(email);
     }
     // Refresh Token 생성.
-    public String createRefreshToken(String email, String roles) {
-        return this.createToken(email, roles, refreshTokenValidTime);
+    public String createRefreshToken(String email) {
+        return this.createToken(email);
     }
 
     // Create token
-    public String createToken(String userId, String roles, long tokenValid) {
+    public String createToken(String userId ) {
         Claims claims = Jwts.claims().setSubject(userId); // claims 생성 및 payload 설정
-        claims.put("roles", roles); // 권한 설정, key/ value 쌍으로 저장
+//        claims.put("roles", roles); // 권한 설정, key/ value 쌍으로 저장
 
         Date date = new Date();
         return Jwts.builder()
                 .setClaims(claims) // 발행 유저 정보 저장
                 .setIssuedAt(date) // 발행 시간 저장
-                .setExpiration(new Date(date.getTime() + tokenValid)) // 토큰 유효 시간 저장
+                .setExpiration(new Date(date.getTime() + this.accessTokenValidTime)) // 토큰 유효 시간 저장
                 .signWith(SignatureAlgorithm.HS256, secretKey) // 해싱 알고리즘 및 키 설정
                 .compact(); // 생성
     }

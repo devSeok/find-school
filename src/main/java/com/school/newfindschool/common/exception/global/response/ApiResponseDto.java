@@ -1,16 +1,23 @@
 package com.school.newfindschool.common.exception.global.response;
 
-import lombok.AllArgsConstructor;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ApiResponseDto {
+public class ApiResponseDto<T> {
 
     private String message;
     private int status;
-    private Object data = new Object();
+    private T data;
+
+    @Builder
+    public ApiResponseDto(String message, int status, T data) {
+        this.message = message;
+        this.status = status;
+        this.data = data;
+    }
 }

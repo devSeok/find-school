@@ -6,13 +6,15 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         show-sel: true
         format-sql: true
     open-in-view: false
+    generate-ddl: true
   logging:
     level:
       org.hibernate.SQL: debug
       org.hibernate.type: trace
+
